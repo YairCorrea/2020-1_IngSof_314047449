@@ -22,7 +22,7 @@
 #  
 #  
 class List:
-	def add(self,element):
+	def add1(self,element):
 		pass
 	def add(self,element,index):
 		pass
@@ -34,11 +34,11 @@ class List:
 		pass
 	def isEmpty(self):
 		pass
-	def remove(self,index):
+	def remove1(self,index):
 		pass
 	def remove(self,obj):
 		pass
-	def size(self):
+	def Size(self):
 		pass
 	def toArray(self):
 		pass

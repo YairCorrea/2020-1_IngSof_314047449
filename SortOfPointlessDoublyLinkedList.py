@@ -21,6 +21,7 @@
 #  MA 02110-1301, USA.
 #  
 #  
+from list import List
 class Node:
 	def __init__(self,toStore,previousOne,nextOne):
 		self.toStore=toStore
@@ -31,7 +32,7 @@ class DoublyLinkList(List):
 		self.head = None
 		self.tail = None
 		self.size=0
-	def add(self,element):
+	def add1(self,element):
 		NewNode=Node(element,None,None)
 		if self.head is None:
 			self.head= NewNode
@@ -44,10 +45,10 @@ class DoublyLinkList(List):
 	def add(self,element,index):
 		NewNode=Node(element,None,None)
 		if index==self.size+1:
-			add(element)
-		else if index>self.size+1:
+			add1(element)
+		elif index>self.size+1:
 			raise Exception("Lo siento, pero el indice tiene que ser a lo mas el siguiente valor de la lista actual.")
-		else if index ==1:
+		elif index ==1:
 			self.head.previousOne=NewNode
 			NewNode.nextOne=self.head
 			self.head=NewNode
@@ -83,8 +84,8 @@ class DoublyLinkList(List):
 			indice+=1
 		return tmp.toStore
 	def isEmpty(self):
-		return size is 0
-	def remove(self,index):
+		return self.size is 0
+	def remove1(self,index):
 		if index > self.size:
 			return None
 		if index < 1:
@@ -94,20 +95,26 @@ class DoublyLinkList(List):
 		while indice<index:
 			tmp=tmp.nextOne
 			indice+=1
-		tmp.nextOne.previousOne=tmp.previousOne
-		tmp.previousOne.nextOne=tmp.nextOne
-		size+=-1
+		if not tmp is self.tail:
+			tmp.nextOne.previousOne=tmp.previousOne
+		else:
+			self.tail=tmp.previousOne
+		if not tmp is self.head:
+			tmp.previousOne.nextOne=tmp.nextOne
+		else:
+			self.head=tmp.nextOne
+		self.size+=-1
 		return tmp.toStore
 	def remove(self,obj):
 		tmp=self.head
 		ind=1
 		while not tmp is None:
 			if tmp.toStore is obj:
-				return remove(ind)
+				return remove1(ind)
 			tmp=tmp.nextOne
 			ind+=1
 		return None
-	def size(self):
+	def Size(self):
 		return self.size		
 	def toArray(self):
 		arreglo=[]
@@ -116,9 +123,3 @@ class DoublyLinkList(List):
 			arreglo.append(tmp.toStore)
 			tmp=tmp.nextOne
 		return arreglo
-def main(args):
-    return 0
-
-if __name__ == '__main__':
-    import sys
-    sys.exit(main(sys.argv))

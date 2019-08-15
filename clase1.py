@@ -41,6 +41,21 @@ def main(args):
 	coso2=int(raw_input('->'))
 	foo= (Class1(coso1,coso2)) if (coso1 > 0 and coso2 > 0) else (Class1(666,666))
 	foo.multFoo()
+        print("Y medio checa la lista ligada")
+        lista=DoublyLinkList()
+        lista.add1(666)
+        lista.add1(1332)
+        lista.add1(1998)
+        print(lista.toArray())
+        lista.add(2664,2)
+        print(lista.toArray())
+        print(lista.get(3))
+        siz=lista.Size()
+        while not lista.isEmpty():
+            lista.remove1(siz)
+            siz+=-1
+        print(lista.toArray())
 if __name__ == '__main__':
     import sys
+    from SortOfPointlessDoublyLinkedList import DoublyLinkList
     sys.exit(main(sys.argv))
